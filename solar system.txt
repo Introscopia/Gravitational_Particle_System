@@ -1,0 +1,14 @@
+You can switch the list initialization code in setup(), which looks like:
+	for( int i = 0; i < 60; ++i ) PS.add( new Particle( ... ) ); 
+for these lines here to create the solar system from one of the gifs in the article.
+
+  float r = 240;
+  PS.add( new Particle( cx, cy, 0, 0.024, 60, #F9FAD9 ) );
+  PS.add( new Particle( cx + r, cy, 0, -sqrt( G*( PS.get(0).area() / r ) ), 6, #9AF05E) );
+  PS.add( new Particle( cx + r - 20, cy, 0, PS.get(1).vel.y -sqrt( G*( PS.get(1).area() / 20 ) ) , 2, #5EF0E7 ) );
+  PS.add( new Particle( cx - 110, cy, 0, sqrt( G*( PS.get(0).area() / 110 ) ), 3, #F0580C ) );
+
+
+  // and this like can be put in draw(), before the particles' exe()
+  // to show a view centered on the little green planet.
+  translate( cx - PS.get(1).pos.x, cy - PS.get(1).pos.y ); 

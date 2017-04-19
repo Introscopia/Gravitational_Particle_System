@@ -1,0 +1,7 @@
+This creates a toroidal topology,
+hence the name of the method and variables I used to accomplish this.
+A torus is a doughnut shape, we say that these top-bottom and right-left
+"warps" form a toroidal topology because 
+the only way to take a piece of paper and fold it such that 
+it actually connects those edges in that way 
+is to make a doughnut shape with it.

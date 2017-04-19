@@ -1,0 +1,21 @@
+That's right, if you still haven't had enough math, here some more! 
+
+  // here I'm calculating the total kinetic energy of the system.
+  // we can observe the inelastic colitions decreasing the total energy
+  // as we would predict,
+  // but the gravity injects more into the system. I think this is acceptable
+  // in a simulation at a local level, but you should really ask a physicist.
+	
+  float K = 0; 
+  for(int i = 0; i < PS.size(); ++i){
+    K += 0.5 * PI * sq(PS.get(i).R) * sq( PS.get(i).vel.mag() );
+  }
+  println( K );
+  
+  // And this is to monitor the conservation of "mass" (area)
+  // (Spoiler) it works!
+  float M = 0; 
+  for(int i = 0; i < PS.size(); ++i){
+    M += PS.get(i).area();
+  }
+  println( M );

@@ -1,0 +1,26 @@
+ //rudimentary inelastic collisions
+  for(int i = 1; i < PS.length; ++i){   // loop through the particle array
+    for(int j = 0; j < i; j++){           // only checking each pair of objects once.
+      if( PS[i].alive && PS[j].alive ){
+        if( PS[i].pos.dist( PS[j].pos ) < PS[i].R + PS[j].R ){
+          int a = ( PS[i].R > PS[j].R )? i : j;      // the larger one
+          int b = ( a == i )? j : i;                 // absorbs the smaller one.
+          PS[a].vel.set( PS[b].vel.mult( (PI*sq(PS[b].R)) / (PI*sq(PS[a].R)) ) );  // gains it's kinetic energy
+          PS[a].R = sqrt( sq(PS[a].R) + sq(PS[b].R) );  // and it's area.
+          PS[a].D = PS[a].R * 2;                        // refresh the diameter.
+          PS[b].alive = false;                          // kill the small one.
+        }
+      }
+    }
+  }
+  
+  // here I'm calculating the total kinetic energy of the system.
+  // (Just for the physics nerds, if that's not you, don't worry about it!)
+  // but we can observe the total energy falling, as we would predict.
+  float K = 0; 
+  for(int i = 0; i < PS.length; ++i){
+    if( PS[i].alive ){
+      K += 0.5 * PI * sq(PS[i].R) * sq( PS[i].vel.mag() );
+    }
+  }
+  println( K );

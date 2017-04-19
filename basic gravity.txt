@@ -1,0 +1,6 @@
+  void gravitate( Particle p ){                                                                     
+    PVector grav = new PVector(1,0);                                                                
+    grav.setMag( G*(p.area()) / sq( constrain(dist(pos.x, pos.y, p.pos.x, p.pos.y), 1, 100000) ) );                           
+    grav.rotate(atan2(p.pos.y - pos.y, p.pos.x - pos.x ));                                          
+    acc.add(grav);
+  }

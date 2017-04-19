@@ -1,0 +1,14 @@
+// Object of Arrays
+Particle_system the_system;
+
+Class Particle_system{
+	PVector[] positions, velocities;
+}
+
+
+// Array of Objects
+Particle[] particle_system;
+
+Class Particle{
+	PVector position, velocity;
+}
